@@ -6,6 +6,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ProductoControlador;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -14,7 +17,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ProduktuFormulario extends JDialog {
+	
 
+	private ProductoControlador productoControlador;
+	
+
+	public ProductoControlador getProductoControlador() {
+		return productoControlador;
+	}
+
+	public void setProductoControlador(ProductoControlador productoControlador) {
+		this.productoControlador = productoControlador;
+	}
+	
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textFieldNumExistencias;
 	private JTextField textFieldProveedor;
@@ -38,6 +53,7 @@ public class ProduktuFormulario extends JDialog {
 	 * Create the dialog.
 	 */
 	public ProduktuFormulario() {
+		super();
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

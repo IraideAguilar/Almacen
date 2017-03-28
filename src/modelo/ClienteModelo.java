@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import controlador.ClienteControlador;
+
 
 
 /**
@@ -16,6 +18,7 @@ import java.util.ArrayList;
  */
 
 public class ClienteModelo extends Conector{
+	private ClienteControlador clienteControlador;
 
 
 	public ArrayList<Cliente> selectAll(){

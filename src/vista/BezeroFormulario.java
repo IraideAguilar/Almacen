@@ -7,6 +7,9 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ClienteControlador;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -18,6 +21,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class BezeroFormulario extends JDialog {
+	
+	private ClienteControlador clienteControlador;
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField_nombre;
@@ -26,23 +31,24 @@ public class BezeroFormulario extends JDialog {
 	private JTextField textField_direccion;
 	private JTextField textField_codPostal;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			BezeroFormulario dialog = new BezeroFormulario();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
+	
+	public ClienteControlador getClienteControlador() {
+		return clienteControlador;
 	}
+
+	public void setClienteControlador(ClienteControlador clienteControlador) {
+		this.clienteControlador = clienteControlador;
+	}
+
+
 
 	/**
 	 * Create the dialog.
 	 */
-	public BezeroFormulario() {
+	public BezeroFormulario(JDialog parent, boolean modal) {
+		super(parent, modal);
+		
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));

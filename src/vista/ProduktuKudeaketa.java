@@ -7,12 +7,25 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controlador.ProductoControlador;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
 public class ProduktuKudeaketa extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	
+	private ProductoControlador productoControlador;
+
+	public ProductoControlador getProductoControlador() {
+		return productoControlador;
+	}
+
+	public void setProductoControlador(ProductoControlador productoControlador) {
+		this.productoControlador = productoControlador;
+	}
 
 	/**
 	 * Launch the application.
