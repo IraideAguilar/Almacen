@@ -3,12 +3,17 @@
  */
 package controlador;
 
+import java.util.ArrayList;
 
 import modelo.Cliente;
+import modelo.ClienteModelo;
+import modelo.ProductoModelo;
 import vista.BezeroFormulario;
 import vista.BezeroKudeatzailea;
+import vista.BorrarCliente;
 import vista.Nagusia;
-
+import vista.ProduktuFormulario;
+import vista.ProduktuKudeaketa;
 
 /**
  * @author enautirakasle
@@ -17,20 +22,21 @@ import vista.Nagusia;
 
 public class ClienteControlador {
 
-	private BezeroFormulario bezeroFormulario;
-	private BezeroKudeatzailea bezeroKudeatzailea;
-	private Nagusia nagusia;
-
 	//TODO atributuak jarri
+	BezeroFormulario bezeroFormulario;
+	BezeroKudeatzailea bezeroKudeatzailea;
+	Nagusia nagusia;
+	ClienteModelo clienteModelo;
+	BorrarCliente borrarCliente;
 	
 	public void zabalduBezeroKuedeatzailea(){
 		//TODO bezero kudeatzailea leihoa zabaldu
-		
+		this.bezeroKudeatzailea.setVisible(true);
 	}
 	
 	public void zabalduBezeroFormularioa(){
 		//TODO bezero formularioa zabaldu
-		
+		this.bezeroFormulario.setVisible(true);
 	}
 
 	public BezeroFormulario getBezeroFormulario() {
@@ -56,4 +62,51 @@ public class ClienteControlador {
 	public void setNagusia(Nagusia nagusia) {
 		this.nagusia = nagusia;
 	}
+
+	public ClienteModelo getClienteModelo() {
+		return clienteModelo;
+	}
+
+	public void setClienteModelo(ClienteModelo clienteModelo) {
+		this.clienteModelo = clienteModelo;
+	}
+	
+	
+	public BorrarCliente getBorrarCliente() {
+		return borrarCliente;
+	}
+
+	public void setBorrarCliente(BorrarCliente borrarCliente) {
+		this.borrarCliente = borrarCliente;
+	}
+
+	public void itxiBezeroFormulario() {
+		// TODO Apéndice de método generado automáticamente
+		this.bezeroFormulario.dispose();
+	}
+
+	public void guardarCliente(String id, String nombre, String telefono, String direccion, String codPostal) {
+		
+		Cliente cliente = new Cliente();
+		
+		cliente.setId(id);
+		cliente.setNombre(nombre);
+		cliente.setTelefono(telefono);
+		cliente.setDireccion(direccion);
+		cliente.setCodPostal(codPostal);
+		this.clienteModelo.insert(cliente);
+		
+	}
+
+	public void abrirBorrarFormulario() {
+		
+		ArrayList<Cliente> clientes = this.clienteModelo.selectAll();
+		borrarCliente.conboBoxBete(clientes);
+		
+		this.borrarCliente.setVisible(true);		
+	}
+
+	
+
+	
 }

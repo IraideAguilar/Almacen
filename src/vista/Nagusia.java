@@ -8,41 +8,20 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ClienteControlador;
+import controlador.ProductoControlador;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Nagusia extends JFrame {
-	
-	private ClienteControlador clienteControlador;
-
-	public ClienteControlador getClienteControlador() {
-		return clienteControlador;
-	}
-
-	public void setClienteControlador(ClienteControlador clienteControlador) {
-		this.clienteControlador = clienteControlador;
-	}
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Nagusia frame = new Nagusia();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
+	private ClienteControlador clienteControlador;
+	private ProductoControlador productoControlador;
 	/**
 	 * Create the frame.
 	 */
@@ -55,10 +34,20 @@ public class Nagusia extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnBezeroKudeatzailea = new JButton("Bezero Kudeatzailea");
+		btnBezeroKudeatzailea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				clienteControlador.zabalduBezeroKuedeatzailea();
+			}
+		});
 		btnBezeroKudeatzailea.setBounds(132, 101, 177, 23);
 		contentPane.add(btnBezeroKudeatzailea);
 		
 		JButton btnProduktuKudeatzailea = new JButton("Produktu Kudeatzailea");
+		btnProduktuKudeatzailea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				productoControlador.zabalduProduktuKudeatzailea();
+			}
+		});
 		btnProduktuKudeatzailea.setBounds(132, 160, 177, 23);
 		contentPane.add(btnProduktuKudeatzailea);
 		
@@ -67,4 +56,17 @@ public class Nagusia extends JFrame {
 		lblBiltegia.setBounds(173, 25, 136, 14);
 		contentPane.add(lblBiltegia);
 	}
+	public ClienteControlador getClienteControlador() {
+		return clienteControlador;
+	}
+	public void setClienteControlador(ClienteControlador clienteControlador) {
+		this.clienteControlador = clienteControlador;
+	}
+	public ProductoControlador getProductoControlador() {
+		return productoControlador;
+	}
+	public void setProductoControlador(ProductoControlador productoControlador) {
+		this.productoControlador = productoControlador;
+	}
+	
 }

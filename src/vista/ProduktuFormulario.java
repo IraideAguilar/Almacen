@@ -7,6 +7,7 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import controlador.ClienteControlador;
 import controlador.ProductoControlador;
 
 import javax.swing.GroupLayout;
@@ -17,43 +18,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class ProduktuFormulario extends JDialog {
-	
 
-	private ProductoControlador productoControlador;
-	
-
-	public ProductoControlador getProductoControlador() {
-		return productoControlador;
-	}
-
-	public void setProductoControlador(ProductoControlador productoControlador) {
-		this.productoControlador = productoControlador;
-	}
-	
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textFieldNumExistencias;
 	private JTextField textFieldProveedor;
 	private JTextField textFieldNombre;
 	private JTextField textFieldPrecio;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		try {
-			ProduktuFormulario dialog = new ProduktuFormulario();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	private ClienteControlador clienteControlador;
+	private ProductoControlador productoControlador;
 	/**
 	 * Create the dialog.
 	 */
 	public ProduktuFormulario() {
-		super();
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -126,7 +103,7 @@ public class ProduktuFormulario extends JDialog {
 				JButton okButton = new JButton("Guardar");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
-						//TODO
+						productoControlador.guardarProducto(textFieldNombre.getText(),textFieldProveedor.getText(),textFieldPrecio.getText(),textFieldNumExistencias.getText());
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -145,4 +122,17 @@ public class ProduktuFormulario extends JDialog {
 			}
 		}
 	}
+	public ClienteControlador getClienteControlador() {
+		return clienteControlador;
+	}
+	public void setClienteControlador(ClienteControlador clienteControlador) {
+		this.clienteControlador = clienteControlador;
+	}
+	public ProductoControlador getProductoControlador() {
+		return productoControlador;
+	}
+	public void setProductoControlador(ProductoControlador productoControlador) {
+		this.productoControlador = productoControlador;
+	}
+	
 }
