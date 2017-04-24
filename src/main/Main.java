@@ -34,8 +34,8 @@ public class Main {
 		ProduktuFormulario produktuFormulario = new ProduktuFormulario();
 		ProduktuKudeaketa produktuKudeaketa = new ProduktuKudeaketa();
 		BorrarCliente borrarCliente = new BorrarCliente(bezeroKudeatzailea,true);
-		EskariKudatzailea eskariKudeatzailea = new EskariKudatzailea(nagusia,true);
-		EskariaListatu eskariaListatu = new EskariaListatu(eskariKudeatzailea,true);
+		EskariKudatzailea eskariKudatzailea = new EskariKudatzailea(nagusia,true);
+		EskariaListatu eskariaListatu = new EskariaListatu(eskariKudatzailea,true);
 		
 		//leihoei controladoreak ezarri
 	
@@ -50,7 +50,7 @@ public class Main {
 		produktuKudeaketa.setClienteControlador(clienteControlador);
 		produktuKudeaketa.setProductoControlador(productoControlador);
 		borrarCliente.setClientecontrolador(clienteControlador);
-		eskariKudeatzailea.setPedidoControlador(pedidoControlador);
+		eskariKudatzailea.setPedidoControlador(pedidoControlador);
 		eskariaListatu.setPedidoControlador(pedidoControlador);
 		
 		//controladoreei modelo eta lehioak ezarri
@@ -62,6 +62,9 @@ public class Main {
 		clienteControlador.setBorrarCliente(borrarCliente);
 		
 		pedidoControlador.setEskariKudatzailea(eskariKudatzailea);
+		pedidoControlador.setEskariaListatu(eskariaListatu);
+		pedidoControlador.setNagusia(nagusia);
+		
 		
 		nagusia.setVisible(true);
 		

@@ -29,6 +29,14 @@ public class PedidoControlador {
 	public void setEskariaListatu(EskariaListatu eskariaListatu) {
 		this.eskariaListatu = eskariaListatu;
 	}
+	public void zabalduEskariKudatzailea() {
+		// TODO Auto-generated method stub
+		this.eskariKudatzailea.setVisible(true);
+	}
+	public void zabalduEskariaListatu() {
+		// TODO Auto-generated method stub
+		this.eskariaListatu.setVisible(true);
+	}
 	
 	
 	

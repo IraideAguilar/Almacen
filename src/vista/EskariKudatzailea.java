@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.PedidoControlador;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EskariKudatzailea extends JDialog {
 
@@ -41,6 +43,11 @@ public class EskariKudatzailea extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			JButton btnEskariaListatu = new JButton("Eskaria Listatu");
+			btnEskariaListatu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					pedidoControlador.zabalduEskariaListatu();
+				}
+			});
 			btnEskariaListatu.setBounds(141, 90, 139, 23);
 			contentPanel.add(btnEskariaListatu);
 		}

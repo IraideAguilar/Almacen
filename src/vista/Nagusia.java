@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import controlador.ClienteControlador;
+import controlador.PedidoControlador;
 import controlador.ProductoControlador;
 
 import javax.swing.JButton;
@@ -22,6 +23,8 @@ public class Nagusia extends JFrame {
 	
 	private ClienteControlador clienteControlador;
 	private ProductoControlador productoControlador;
+	private PedidoControlador pedidoControlador;
+	
 	/**
 	 * Create the frame.
 	 */
@@ -59,6 +62,8 @@ public class Nagusia extends JFrame {
 		JButton buttonEskariKudeatzailea = new JButton("Eskari Kudeaketa");
 		buttonEskariKudeatzailea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				pedidoControlador.zabalduEskariKudatzailea();
+				
 			}
 			
 		});
