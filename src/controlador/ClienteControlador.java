@@ -23,11 +23,11 @@ import vista.ProduktuKudeaketa;
 public class ClienteControlador {
 
 	//TODO atributuak jarri
-	BezeroFormulario bezeroFormulario;
-	BezeroKudeatzailea bezeroKudeatzailea;
-	Nagusia nagusia;
-	ClienteModelo clienteModelo;
-	BorrarCliente borrarCliente;
+	private BezeroFormulario bezeroFormulario;
+	private BezeroKudeatzailea bezeroKudeatzailea;
+	private Nagusia nagusia;
+	private ClienteModelo clienteModelo;
+	private BorrarCliente borrarCliente;
 	
 	public void zabalduBezeroKuedeatzailea(){
 		//TODO bezero kudeatzailea leihoa zabaldu

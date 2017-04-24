@@ -1,4 +1,7 @@
 package modelo;
+
+import java.util.ArrayList;
+
 /**
  * 
  */
@@ -14,7 +17,17 @@ public class Cliente {
 	private String direccion;
 	private String codPostal;
 	private String telefono;
+	
+	
+	private ArrayList<Pedido> pedidos;
+	
 
+	public ArrayList<Pedido> getPedidos() {
+		return pedidos;
+	}
+	public void setPedidos(ArrayList<Pedido> pedidos) {
+		this.pedidos = pedidos;
+	}
 	public Cliente() {
 		super();
 		// TODO Auto-generated constructor stub

@@ -55,6 +55,15 @@ public class Nagusia extends JFrame {
 		lblBiltegia.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 18));
 		lblBiltegia.setBounds(173, 25, 136, 14);
 		contentPane.add(lblBiltegia);
+		
+		JButton buttonEskariKudeatzailea = new JButton("Eskari Kudeaketa");
+		buttonEskariKudeatzailea.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+			
+		});
+		buttonEskariKudeatzailea.setBounds(132, 215, 177, 23);
+		contentPane.add(buttonEskariKudeatzailea);
 	}
 	public ClienteControlador getClienteControlador() {
 		return clienteControlador;
@@ -68,5 +77,4 @@ public class Nagusia extends JFrame {
 	public void setProductoControlador(ProductoControlador productoControlador) {
 		this.productoControlador = productoControlador;
 	}
-	
 }

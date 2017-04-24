@@ -1,12 +1,15 @@
 package main;
 
 import controlador.ClienteControlador;
+import controlador.PedidoControlador;
 import controlador.ProductoControlador;
 import modelo.ClienteModelo;
 import modelo.ProductoModelo;
 import vista.BezeroFormulario;
 import vista.BezeroKudeatzailea;
 import vista.BorrarCliente;
+import vista.EskariKudatzailea;
+import vista.EskariaListatu;
 import vista.Nagusia;
 import vista.ProduktuFormulario;
 import vista.ProduktuKudeaketa;
@@ -21,6 +24,8 @@ public class Main {
 		ProductoControlador productoControlador = new ProductoControlador();
 		ClienteModelo clienteModelo = new ClienteModelo();
 		ProductoModelo productoModelo = new ProductoModelo();
+		PedidoControlador pedidoControlador = new PedidoControlador();
+		
 		
 		//lehioak sortu
 		Nagusia nagusia = new Nagusia();
@@ -29,6 +34,9 @@ public class Main {
 		ProduktuFormulario produktuFormulario = new ProduktuFormulario();
 		ProduktuKudeaketa produktuKudeaketa = new ProduktuKudeaketa();
 		BorrarCliente borrarCliente = new BorrarCliente(bezeroKudeatzailea,true);
+		EskariKudatzailea eskariKudeatzailea = new EskariKudatzailea(nagusia,true);
+		EskariaListatu eskariaListatu = new EskariaListatu(eskariKudeatzailea,true);
+		
 		//leihoei controladoreak ezarri
 	
 		bezeroFormulario.setClienteControlador(clienteControlador);
@@ -42,6 +50,8 @@ public class Main {
 		produktuKudeaketa.setClienteControlador(clienteControlador);
 		produktuKudeaketa.setProductoControlador(productoControlador);
 		borrarCliente.setClientecontrolador(clienteControlador);
+		eskariKudeatzailea.setPedidoControlador(pedidoControlador);
+		eskariaListatu.setPedidoControlador(pedidoControlador);
 		
 		//controladoreei modelo eta lehioak ezarri
 		
@@ -51,6 +61,7 @@ public class Main {
 		clienteControlador.setNagusia(nagusia);
 		clienteControlador.setBorrarCliente(borrarCliente);
 		
+		pedidoControlador.setEskariKudatzailea(eskariKudatzailea);
 		
 		nagusia.setVisible(true);
 		
