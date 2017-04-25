@@ -1,5 +1,9 @@
 package controlador;
 
+import java.util.ArrayList;
+
+import modelo.Pedido;
+import modelo.PedidoModelo;
 import vista.EskariKudatzailea;
 import vista.EskariaListatu;
 import vista.Nagusia;
@@ -9,8 +13,15 @@ public class PedidoControlador {
 	private Nagusia nagusia;
 	private EskariKudatzailea eskariKudatzailea;
 	private EskariaListatu eskariaListatu;
+	private PedidoModelo pedidoModelo;
 	
 	
+	public PedidoModelo getPedidoModelo() {
+		return pedidoModelo;
+	}
+	public void setPedidoModelo(PedidoModelo pedidoModelo) {
+		this.pedidoModelo = pedidoModelo;
+	}
 	public Nagusia getNagusia() {
 		return nagusia;
 	}
@@ -35,7 +46,16 @@ public class PedidoControlador {
 	}
 	public void zabalduEskariaListatu() {
 		// TODO Auto-generated method stub
+		ArrayList<Pedido> pedidos = this.pedidoModelo.select();
+		this.eskariaListatu.tablaOsotu(pedidos);
+		
+		
+		
 		this.eskariaListatu.setVisible(true);
+	}
+	public void eskariarenDatuakIrakurri(int idPedido, String idCliente) {
+		// TODO Apéndice de método generado automáticamente
+		
 	}
 	
 	

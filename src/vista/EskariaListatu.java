@@ -7,14 +7,19 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import controlador.PedidoControlador;
-
+import modelo.Pedido;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class EskariaListatu extends JDialog {
 
@@ -36,7 +41,7 @@ public class EskariaListatu extends JDialog {
 
 
 
-	private JTable table;
+	private JTable tablaPedidos;
 	private JTable table_1;
 	private JTextField textField_1;
 	private JTextField textField_2;
@@ -62,8 +67,22 @@ public class EskariaListatu extends JDialog {
 		scrollPane.setBounds(24, 50, 274, 163);
 		contentPanel.add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		tablaPedidos = new JTable();
+		tablaPedidos.addMouseListener(new MouseAdapter() {
+			@Override
+			
+			public void mouseClicked(MouseEvent arg0) {
+				//taulatik ze lerro klikatu den jakin
+				int aukeratutakoLerroa = tablaPedidos.getSelectedRow();
+				//lerrotik,guk nahi ditugun zutabearen lerroa jaso
+				int idPedido = (int)tablaPedidos.getModel().getValueAt(aukeratutakoLerroa, 0);
+				String idCliente = (String)tablaPedidos.getModel().getValueAt(aukeratutakoLerroa, 1);
+				//pedido eta bezero erakutzi
+				pedidoControlador.eskariarenDatuakIrakurri(idPedido,idCliente);
+				
+			}
+		});
+		scrollPane.setViewportView(tablaPedidos);
 		
 		JLabel lblListadoDePedidos = new JLabel("LISTADO DE PEDIDOS");
 		lblListadoDePedidos.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -122,5 +141,25 @@ public class EskariaListatu extends JDialog {
 		JLabel lblTelfono = new JLabel("Tel\u00E9fono");
 		lblTelfono.setBounds(38, 412, 78, 14);
 		contentPanel.add(lblTelfono);
+	}
+
+
+
+	public void tablaOsotu(ArrayList<Pedido> pedidos) {
+		// TODO Apéndice de método generado automáticamente
+		//tabla sortu
+		DefaultTableModel tableModel = new DefaultTableModel();
+		//kabezera sortu
+		Object[] cabecera = { "id", "id_cliente", "fecha" };
+		tableModel.setColumnIdentifiers(cabecera);
+		
+		//rellenar tabla pedidos
+		for (Pedido pedido : pedidos) {
+			Object[] linea = { pedido.getId(), pedido.getIdCliente(), pedido.getFecha(),};
+			tableModel.addRow(linea);
+		}
+		tablaPedidos.setModel(tableModel);
+		
+		
 	}
 }

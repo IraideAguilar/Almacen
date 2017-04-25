@@ -20,11 +20,12 @@ import java.awt.event.ActionEvent;
 public class Nagusia extends JFrame {
 
 	private JPanel contentPane;
-	
+
 	private ClienteControlador clienteControlador;
 	private ProductoControlador productoControlador;
 	private PedidoControlador pedidoControlador;
-	
+
+
 	/**
 	 * Create the frame.
 	 */
@@ -35,7 +36,7 @@ public class Nagusia extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JButton btnBezeroKudeatzailea = new JButton("Bezero Kudeatzailea");
 		btnBezeroKudeatzailea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -44,7 +45,7 @@ public class Nagusia extends JFrame {
 		});
 		btnBezeroKudeatzailea.setBounds(132, 101, 177, 23);
 		contentPane.add(btnBezeroKudeatzailea);
-		
+
 		JButton btnProduktuKudeatzailea = new JButton("Produktu Kudeatzailea");
 		btnProduktuKudeatzailea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -53,33 +54,45 @@ public class Nagusia extends JFrame {
 		});
 		btnProduktuKudeatzailea.setBounds(132, 160, 177, 23);
 		contentPane.add(btnProduktuKudeatzailea);
-		
+
 		JLabel lblBiltegia = new JLabel("BILTEGIA");
 		lblBiltegia.setFont(new Font("Times New Roman", Font.BOLD | Font.ITALIC, 18));
 		lblBiltegia.setBounds(173, 25, 136, 14);
 		contentPane.add(lblBiltegia);
-		
+
 		JButton buttonEskariKudeatzailea = new JButton("Eskari Kudeaketa");
 		buttonEskariKudeatzailea.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				pedidoControlador.zabalduEskariKudatzailea();
-				
+
 			}
-			
+
 		});
 		buttonEskariKudeatzailea.setBounds(132, 215, 177, 23);
 		contentPane.add(buttonEskariKudeatzailea);
 	}
+
 	public ClienteControlador getClienteControlador() {
 		return clienteControlador;
 	}
+
 	public void setClienteControlador(ClienteControlador clienteControlador) {
 		this.clienteControlador = clienteControlador;
 	}
+
 	public ProductoControlador getProductoControlador() {
 		return productoControlador;
 	}
+
 	public void setProductoControlador(ProductoControlador productoControlador) {
 		this.productoControlador = productoControlador;
+	}
+	
+	public PedidoControlador getPedidoControlador() {
+		return pedidoControlador;
+	}
+
+	public void setPedidoControlador(PedidoControlador pedidoControlador) {
+		this.pedidoControlador = pedidoControlador;
 	}
 }
