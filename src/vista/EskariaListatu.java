@@ -8,8 +8,11 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import controlador.PedidoControlador;
+import modelo.Cliente;
+import modelo.DetallesPedido;
 import modelo.Pedido;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
@@ -43,10 +46,10 @@ public class EskariaListatu extends JDialog {
 
 	private JTable tablaPedidos;
 	private JTable table_1;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textFieldNombre;
+	private JTextField textFieldDireccion;
+	private JTextField textFieldCodPostal;
+	private JTextField textFieldTelefono;
 
 	
 
@@ -106,37 +109,37 @@ public class EskariaListatu extends JDialog {
 		lblClienteDelPedido.setBounds(38, 276, 239, 14);
 		contentPanel.add(lblClienteDelPedido);
 		
-		JLabel lblNombre = new JLabel("Nombre");
-		lblNombre.setBounds(38, 315, 46, 14);
-		contentPanel.add(lblNombre);
+		JLabel Nombre = new JLabel("Nombre");
+		Nombre.setBounds(38, 315, 46, 14);
+		contentPanel.add(Nombre);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(127, 312, 86, 20);
-		contentPanel.add(textField_1);
-		textField_1.setColumns(10);
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(127, 312, 86, 20);
+		contentPanel.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
 		
 		JLabel lblDireccin = new JLabel("Direcci\u00F3n");
 		lblDireccin.setBounds(38, 346, 46, 14);
 		contentPanel.add(lblDireccin);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(127, 343, 86, 20);
-		contentPanel.add(textField_2);
-		textField_2.setColumns(10);
+		textFieldDireccion = new JTextField();
+		textFieldDireccion.setBounds(127, 343, 86, 20);
+		contentPanel.add(textFieldDireccion);
+		textFieldDireccion.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("C\u00F3digo Postal");
 		lblNewLabel.setBounds(38, 377, 78, 14);
 		contentPanel.add(lblNewLabel);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(127, 374, 86, 20);
-		contentPanel.add(textField_3);
-		textField_3.setColumns(10);
+		textFieldCodPostal = new JTextField();
+		textFieldCodPostal.setBounds(127, 374, 86, 20);
+		contentPanel.add(textFieldCodPostal);
+		textFieldCodPostal.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(127, 409, 86, 20);
-		contentPanel.add(textField_4);
-		textField_4.setColumns(10);
+		textFieldTelefono = new JTextField();
+		textFieldTelefono.setBounds(127, 409, 86, 20);
+		contentPanel.add(textFieldTelefono);
+		textFieldTelefono.setColumns(10);
 		
 		JLabel lblTelfono = new JLabel("Tel\u00E9fono");
 		lblTelfono.setBounds(38, 412, 78, 14);
@@ -162,4 +165,42 @@ public class EskariaListatu extends JDialog {
 		
 		
 	}
+	public void rellenarTablaDetallesPedido(ArrayList<DetallesPedido> detallesPedidos) {
+		// TODO Apéndice de método generado automáticamente
+		// modeloa sortu
+				DefaultTableModel defaultTableModel = new DefaultTableModel();
+
+				// cabecerako arraya sortu eta modeloari ezarri
+				Object[] cabecera = { "IdPedido", "IdCliente", "Cantidad" };
+				defaultTableModel.setColumnIdentifiers(cabecera);
+
+				// modeloa datuekin bete
+				for (DetallesPedido detallesPedido : detallesPedidos) {
+
+					Object[] linea = { detallesPedido.getIdPedido(), detallesPedido.getIdProducto(), detallesPedido.getCantidad() };
+					defaultTableModel.addRow(linea);
+				}
+
+				// modeloa taulari ezarri
+				tablaPedidos.setModel(defaultTableModel);
+
+				// taula ordenagarria bihurtu
+				TableRowSorter<DefaultTableModel> modeloOrdenado;
+				modeloOrdenado = new TableRowSorter<DefaultTableModel>(defaultTableModel);
+				this.tablaPedidos.setRowSorter(modeloOrdenado);
+			}
+
+
+
+	public void rellenarTablaCamposCliente(Cliente cliente) {
+		// TODO Apéndice de método generado automáticamente
+		this.textFieldNombre.setText(cliente.getNombre());
+		this.textFieldDireccion.setText(cliente.getDireccion());
+		this.textFieldTelefono.setText(cliente.getTelefono());
+		this.textFieldCodPostal.setText(cliente.getCodPostal());
+	}
+		
 }
+
+	
+

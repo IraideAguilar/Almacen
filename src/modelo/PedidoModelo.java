@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class PedidoModelo extends Conector {
 
-	
 
 	public ArrayList<Pedido> select() {
 		

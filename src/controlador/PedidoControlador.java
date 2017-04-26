@@ -2,6 +2,10 @@ package controlador;
 
 import java.util.ArrayList;
 
+import modelo.Cliente;
+import modelo.ClienteModelo;
+import modelo.DetallesPedido;
+import modelo.DetallesPedidoModelo;
 import modelo.Pedido;
 import modelo.PedidoModelo;
 import vista.EskariKudatzailea;
@@ -14,7 +18,8 @@ public class PedidoControlador {
 	private EskariKudatzailea eskariKudatzailea;
 	private EskariaListatu eskariaListatu;
 	private PedidoModelo pedidoModelo;
-	
+	private ClienteModelo clienteModelo;
+	private DetallesPedidoModelo detallesPedidoModelo;
 	
 	public PedidoModelo getPedidoModelo() {
 		return pedidoModelo;
@@ -55,6 +60,15 @@ public class PedidoControlador {
 	}
 	public void eskariarenDatuakIrakurri(int idPedido, String idCliente) {
 		// TODO Apéndice de método generado automáticamente
+        // IDpedidoarekin detalleak atera
+		ArrayList<DetallesPedido> detallesPedido = detallesPedidoModelo.selectPedidoPorId(idPedido);
+		// IDbezereoarekin bezeroaren datuak atera
+		Cliente cliente = clienteModelo.select(idCliente);
+		// bistaratu detalleak
+		eskariaListatu.rellenarTablaDetallesPedido(detallesPedido);
+		// biztaratu bezeroak
+		eskariaListatu.rellenarTablaCamposCliente(cliente);
+		
 		
 	}
 	
