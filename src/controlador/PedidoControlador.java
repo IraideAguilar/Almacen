@@ -8,6 +8,7 @@ import modelo.DetallesPedido;
 import modelo.DetallesPedidoModelo;
 import modelo.Pedido;
 import modelo.PedidoModelo;
+import vista.BezeroarenEskariakErakutzi;
 import vista.EskariKudatzailea;
 import vista.EskariaListatu;
 import vista.Nagusia;
@@ -20,7 +21,26 @@ public class PedidoControlador {
 	private PedidoModelo pedidoModelo;
 	private ClienteModelo clienteModelo;
 	private DetallesPedidoModelo detallesPedidoModelo;
+	private BezeroarenEskariakErakutzi bezeroarenEskariakErakutzi;
 	
+	public BezeroarenEskariakErakutzi getBezeroarenEskariakErakutzi() {
+		return bezeroarenEskariakErakutzi;
+	}
+	public void setBezeroarenEskariakErakutzi(BezeroarenEskariakErakutzi bezeroarenEskariakErakutzi) {
+		this.bezeroarenEskariakErakutzi = bezeroarenEskariakErakutzi;
+	}
+	public ClienteModelo getClienteModelo() {
+		return clienteModelo;
+	}
+	public void setClienteModelo(ClienteModelo clienteModelo) {
+		this.clienteModelo = clienteModelo;
+	}
+	public DetallesPedidoModelo getDetallesPedidoModelo() {
+		return detallesPedidoModelo;
+	}
+	public void setDetallesPedidoModelo(DetallesPedidoModelo detallesPedidoModelo) {
+		this.detallesPedidoModelo = detallesPedidoModelo;
+	}
 	public PedidoModelo getPedidoModelo() {
 		return pedidoModelo;
 	}

@@ -41,7 +41,7 @@ public class BezeroKudeatzailea extends JDialog {
 				clienteControlador.zabalduBezeroFormularioa();
 			}
 		});
-		btnBezeroak.setBounds(133, 86, 137, 23);
+		btnBezeroak.setBounds(110, 74, 180, 23);
 		contentPanel.add(btnBezeroak);
 		
 		JButton btnConsulta = new JButton("Kontsulta");
@@ -50,12 +50,12 @@ public class BezeroKudeatzailea extends JDialog {
 				
 			}
 		});
-		btnConsulta.setBounds(133, 146, 137, 23);
+		btnConsulta.setBounds(110, 153, 180, 23);
 		contentPanel.add(btnConsulta);
 		
 		JLabel lblBigarrenLeihoa = new JLabel("Bezero Kudeatzailea:");
 		lblBigarrenLeihoa.setFont(new Font("Tahoma", Font.BOLD, 17));
-		lblBigarrenLeihoa.setBounds(126, 30, 218, 20);
+		lblBigarrenLeihoa.setBounds(110, 30, 218, 20);
 		contentPanel.add(lblBigarrenLeihoa);
 		
 		JButton btnNewButton = new JButton("Borrar Cliente");
@@ -64,8 +64,17 @@ public class BezeroKudeatzailea extends JDialog {
 				clienteControlador.abrirBorrarFormulario();
 			}
 		});
-		btnNewButton.setBounds(133, 201, 137, 23);
+		btnNewButton.setBounds(110, 192, 180, 23);
 		contentPanel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Bezeroaren Eskariak erakutzi");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				clienteControlador.zabalduBezeroarenEskaria();
+			}
+		});
+		btnNewButton_1.setBounds(110, 112, 180, 23);
+		contentPanel.add(btnNewButton_1);
 	}
 	public ClienteControlador getClienteControlador() {
 		return clienteControlador;

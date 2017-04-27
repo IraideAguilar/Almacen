@@ -45,7 +45,7 @@ public class EskariaListatu extends JDialog {
 
 
 	private JTable tablaPedidos;
-	private JTable table_1;
+	private JTable tablaDetallesPedido;
 	private JTextField textFieldNombre;
 	private JTextField textFieldDireccion;
 	private JTextField textFieldCodPostal;
@@ -96,8 +96,8 @@ public class EskariaListatu extends JDialog {
 		scrollPane_1.setBounds(364, 50, 239, 163);
 		contentPanel.add(scrollPane_1);
 		
-		table_1 = new JTable();
-		scrollPane_1.setViewportView(table_1);
+		tablaDetallesPedido = new JTable();
+		scrollPane_1.setViewportView(tablaDetallesPedido);
 		
 		JLabel lblDetallesPedido = new JLabel("DETALLES PEDIDO");
 		lblDetallesPedido.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -182,12 +182,12 @@ public class EskariaListatu extends JDialog {
 				}
 
 				// modeloa taulari ezarri
-				tablaPedidos.setModel(defaultTableModel);
+				tablaDetallesPedido.setModel(defaultTableModel);
 
 				// taula ordenagarria bihurtu
 				TableRowSorter<DefaultTableModel> modeloOrdenado;
 				modeloOrdenado = new TableRowSorter<DefaultTableModel>(defaultTableModel);
-				this.tablaPedidos.setRowSorter(modeloOrdenado);
+				this.tablaDetallesPedido.setRowSorter(modeloOrdenado);
 			}
 
 

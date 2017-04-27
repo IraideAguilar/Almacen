@@ -10,6 +10,7 @@ import modelo.ClienteModelo;
 import modelo.ProductoModelo;
 import vista.BezeroFormulario;
 import vista.BezeroKudeatzailea;
+import vista.BezeroarenEskariakErakutzi;
 import vista.BorrarCliente;
 import vista.Nagusia;
 import vista.ProduktuFormulario;
@@ -28,7 +29,18 @@ public class ClienteControlador {
 	private Nagusia nagusia;
 	private ClienteModelo clienteModelo;
 	private BorrarCliente borrarCliente;
+	private BezeroarenEskariakErakutzi bezeroarenEskariaErakutzi;
 	
+	
+	
+	public BezeroarenEskariakErakutzi getBezeroarenEskariaErakutzi() {
+		return bezeroarenEskariaErakutzi;
+	}
+
+	public void setBezeroarenEskariaErakutzi(BezeroarenEskariakErakutzi bezeroarenEskariaErakutzi) {
+		this.bezeroarenEskariaErakutzi = bezeroarenEskariaErakutzi;
+	}
+
 	public void zabalduBezeroKuedeatzailea(){
 		//TODO bezero kudeatzailea leihoa zabaldu
 		this.bezeroKudeatzailea.setVisible(true);
@@ -104,6 +116,11 @@ public class ClienteControlador {
 		borrarCliente.conboBoxBete(clientes);
 		
 		this.borrarCliente.setVisible(true);		
+	}
+
+	public void zabalduBezeroarenEskaria() {
+		// TODO Apéndice de método generado automáticamente
+		this.bezeroarenEskariaErakutzi.setVisible(true);
 	}
 
 	
