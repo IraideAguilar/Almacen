@@ -78,6 +78,8 @@ public class Main {
 		clienteControlador.setNagusia(nagusia);
 		clienteControlador.setBorrarCliente(borrarCliente);
 		clienteControlador.setBezeroarenEskariaErakutzi(bezeroarenEskariakErakutzi);
+		clienteControlador.setPedidoModelo(pedidoModelo);
+		clienteControlador.setDetallesPedidoModelo(detallesPedidoModelo);
 		
 		pedidoControlador.setEskariKudatzailea(eskariKudatzailea);
 		pedidoControlador.setEskariaListatu(eskariaListatu);

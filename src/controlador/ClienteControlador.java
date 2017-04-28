@@ -7,6 +7,10 @@ import java.util.ArrayList;
 
 import modelo.Cliente;
 import modelo.ClienteModelo;
+import modelo.DetallesPedido;
+import modelo.DetallesPedidoModelo;
+import modelo.Pedido;
+import modelo.PedidoModelo;
 import modelo.ProductoModelo;
 import vista.BezeroFormulario;
 import vista.BezeroKudeatzailea;
@@ -30,9 +34,19 @@ public class ClienteControlador {
 	private ClienteModelo clienteModelo;
 	private BorrarCliente borrarCliente;
 	private BezeroarenEskariakErakutzi bezeroarenEskariaErakutzi;
+	private PedidoModelo pedidoModelo;
+	private DetallesPedidoModelo detallesPedidoModelo;
 	
 	
 	
+	public PedidoModelo getPedidoModelo() {
+		return pedidoModelo;
+	}
+
+	public void setPedidoModelo(PedidoModelo pedidoModelo) {
+		this.pedidoModelo = pedidoModelo;
+	}
+
 	public BezeroarenEskariakErakutzi getBezeroarenEskariaErakutzi() {
 		return bezeroarenEskariaErakutzi;
 	}
@@ -120,7 +134,34 @@ public class ClienteControlador {
 
 	public void zabalduBezeroarenEskaria() {
 		// TODO Apéndice de método generado automáticamente
+		ArrayList<Cliente> clientes = this.clienteModelo.selectAll();
+		this.bezeroarenEskariaErakutzi.tablaOsotu(clientes);
+		
 		this.bezeroarenEskariaErakutzi.setVisible(true);
+		
+	}
+
+	public void pedidoarenDatuakErakutzi(String idCliente, String nombre, String telefono) {
+		// TODO Apéndice de método generado automáticamente
+		// TODO Apéndice de método generado automáticamente
+        // pedidoarekin detalleak atera
+		ArrayList<Pedido> pedidos = pedidoModelo.selectPedidosPorId(idCliente);
+		
+		for(Pedido pedido: pedidos){
+			ArrayList<DetallesPedido> detallesPedido = this.detallesPedidoModelo.selectPedidoPorId(pedido.getId());
+			pedido.setDetallesPedidos(detallesPedido);
+		}
+		// bistaratu pedidoak
+		bezeroarenEskariaErakutzi.rellenarTablaConPedidosCliente(pedidos);
+		// biztaratu bezeroak
+	}
+
+	public DetallesPedidoModelo getDetallesPedidoModelo() {
+		return detallesPedidoModelo;
+	}
+
+	public void setDetallesPedidoModelo(DetallesPedidoModelo detallesPedidoModelo) {
+		this.detallesPedidoModelo = detallesPedidoModelo;
 	}
 
 	

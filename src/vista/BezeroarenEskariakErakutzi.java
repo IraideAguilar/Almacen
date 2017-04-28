@@ -7,18 +7,27 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import controlador.ClienteControlador;
 import controlador.PedidoControlador;
+import modelo.Cliente;
 import modelo.ClienteModelo;
+import modelo.DetallesPedido;
 import modelo.DetallesPedidoModelo;
+import modelo.Pedido;
 import modelo.PedidoModelo;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import java.awt.Color;
 import javax.swing.JTextField;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class BezeroarenEskariakErakutzi extends JDialog {
 	private ClienteControlador clienteControlador;
@@ -86,8 +95,8 @@ public class BezeroarenEskariakErakutzi extends JDialog {
 
 
 	private final JPanel contentPanel = new JPanel();
-	private JTable table;
-	private JTable table_1;
+	private JTable tableClientes;
+	private JTable tableBezeroarenEskaintza;
 	private JTable table_2;
 	private JTextField textField;
 
@@ -109,15 +118,30 @@ public class BezeroarenEskariakErakutzi extends JDialog {
 		scrollPane.setBounds(10, 50, 328, 160);
 		contentPanel.add(scrollPane);
 		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		tableClientes = new JTable();
+		tableClientes.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				//taulatik ze lerro klikatu den jakin
+				int aukeratutakoLerroa = tableClientes.getSelectedRow();
+				//lerrotik,guk nahi ditugun zutabearen lerroa jaso
+				String idCliente = (String)tableClientes.getModel().getValueAt(aukeratutakoLerroa, 0);
+				String nombre = (String)tableClientes.getModel().getValueAt(aukeratutakoLerroa, 1);
+				String telefono = (String)tableClientes.getModel().getValueAt(aukeratutakoLerroa, 2);
+				//pedido eta bezero erakutzi
+				clienteControlador.pedidoarenDatuakErakutzi(idCliente,nombre, telefono);
+				
+			
+			}
+		});
+		scrollPane.setViewportView(tableClientes);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
 		scrollPane_1.setBounds(10, 270, 328, 140);
 		contentPanel.add(scrollPane_1);
 		
-		table_1 = new JTable();
-		scrollPane_1.setViewportView(table_1);
+		tableBezeroarenEskaintza = new JTable();
+		scrollPane_1.setViewportView(tableBezeroarenEskaintza);
 		
 		JLabel lblBezeroarenEskaintzak = new JLabel("BEZEROAREN ESKAINTZAK");
 		lblBezeroarenEskaintzak.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -147,4 +171,56 @@ public class BezeroarenEskariakErakutzi extends JDialog {
 		lblPrezioa.setBounds(496, 344, 46, 14);
 		contentPanel.add(lblPrezioa);
 	}
-}
+
+
+	public void tablaOsotu(ArrayList<Cliente> clientes) {
+		// TODO Apéndice de método generado automáticamente
+		//tabla sortu
+				DefaultTableModel tableModel = new DefaultTableModel();
+				//kabezera sortu
+				Object[] cabecera = { "id", "nombre", "telefono" };
+				tableModel.setColumnIdentifiers(cabecera);
+				
+				//rellenar tabla pedidos
+				for (Cliente cliente : clientes) {
+					Object[] linea = { cliente.getId(), cliente.getNombre(), cliente.getTelefono(),};
+					tableModel.addRow(linea);
+				}
+				tableClientes.setModel(tableModel);
+				
+				TableRowSorter<DefaultTableModel> ordenar;
+				ordenar = new TableRowSorter<DefaultTableModel>(tableModel);
+				this.tableClientes.setRowSorter(ordenar);
+	}
+
+
+	public void rellenarTablaConPedidosCliente(ArrayList<Pedido> pedidos) {
+		// TODO Apéndice de método generado automáticamente
+		DefaultTableModel defaultTableModel = new DefaultTableModel();
+
+		// cabecerako arraya sortu eta modeloari ezarri
+		Object[] cabecera = { "ID", "FECHA", "COD.POSTAL", "CANTIDAD" };
+		defaultTableModel.setColumnIdentifiers(cabecera);
+
+		// modeloa datuekin bete
+		for (Pedido pedido : pedidos) {
+
+			Object[] linea = { pedido.getId(), pedido.getFecha(), pedido.getCodPostal(), pedido.getDetallesPedidos().size() };
+			defaultTableModel.addRow(linea);
+		}
+
+		// modeloa taulari ezarri
+		tableBezeroarenEskaintza.setModel(defaultTableModel);
+
+		// taula ordenagarria bihurtu
+		TableRowSorter<DefaultTableModel> modeloOrdenado;
+		modeloOrdenado = new TableRowSorter<DefaultTableModel>(defaultTableModel);
+		this.tableBezeroarenEskaintza.setRowSorter(modeloOrdenado);
+	}
+
+		
+	}
+
+				
+
+

@@ -19,7 +19,7 @@ public class ProductoModelo extends Conector{
 		return null;
 	}
 	
-	Producto select(int id){
+	public Producto select(int id){
 		//TODO id hori duen produktua itzultzen du
 		try {
 			Statement st = this.conexion.createStatement();
